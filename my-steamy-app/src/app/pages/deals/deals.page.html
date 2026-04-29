@@ -1,0 +1,96 @@
+<ion-content class="deals-content" [fullscreen]="true">
+
+  <!-- Background -->
+  <div class="page-bg">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+  </div>
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="header-top">
+      <div>
+        <p class="header-subtitle">Discover</p>
+        <h1 class="header-title">Game Deals 🎮</h1>
+      </div>
+      <div class="header-icon">
+        <ion-icon name="flame"></ion-icon>
+      </div>
+    </div>
+    <!-- Search -->
+    <app-input (searchChange)="onSearchChange($event)"></app-input>
+  </div>
+
+  <!-- ─── TOP DEALS CAROUSEL (no search) ─── -->
+  <ng-container *ngIf="!isSearching">
+    <div class="section-label">🔥 Hot Deals</div>
+
+    <!-- Skeleton Carousel -->
+    <div class="carousel-wrapper" *ngIf="isLoading">
+      <div class="carousel-scroll">
+        <div class="skeleton-card" *ngFor="let s of skeletonItems">
+          <ion-skeleton-text animated class="sk-img"></ion-skeleton-text>
+          <div class="sk-body">
+            <ion-skeleton-text animated class="sk-title"></ion-skeleton-text>
+            <ion-skeleton-text animated class="sk-sub"></ion-skeleton-text>
+            <ion-skeleton-text animated class="sk-price"></ion-skeleton-text>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel-wrapper" *ngIf="!isLoading">
+      <div class="carousel-scroll">
+        <app-card
+          *ngFor="let deal of topDeals"
+          [deal]="deal"
+          [store]="getStore(deal.storeID)"
+          (cardClick)="openModal($event)"
+          (favoriteToggle)="onFavoriteToggle($event)">
+        </app-card>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- ─── SEARCH RESULTS ─── -->
+  <ng-container *ngIf="isSearching">
+    <div class="section-label">🔍 Results for "{{ searchQuery }}"</div>
+
+    <!-- Skeleton Grid -->
+    <div class="results-grid" *ngIf="isLoading">
+      <div class="skeleton-card compact" *ngFor="let s of skeletonItems">
+        <ion-skeleton-text animated class="sk-img-sm"></ion-skeleton-text>
+        <div class="sk-body">
+          <ion-skeleton-text animated class="sk-title"></ion-skeleton-text>
+          <ion-skeleton-text animated class="sk-price"></ion-skeleton-text>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-grid" *ngIf="!isLoading">
+      <ng-container *ngIf="searchResults.length > 0; else emptyState">
+        <app-card
+          *ngFor="let deal of searchResults"
+          [deal]="deal"
+          [store]="getStore(deal.storeID)"
+          [compact]="true"
+          (cardClick)="openModal($event)"
+          (favoriteToggle)="onFavoriteToggle($event)">
+        </app-card>
+      </ng-container>
+    </div>
+
+    <!-- Empty State -->
+    <ng-template #emptyState>
+      <div class="empty-state">
+        <div class="empty-icon">🕹️</div>
+        <h3>No deals found</h3>
+        <p>Try searching with a different game title</p>
+      </div>
+    </ng-template>
+  </ng-container>
+
+</ion-content>

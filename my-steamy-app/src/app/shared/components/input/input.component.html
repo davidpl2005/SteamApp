@@ -1,0 +1,13 @@
+<div class="search-wrapper">
+  <ion-icon name="search-outline" class="search-icon"></ion-icon>
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Search games..."
+    [value]="searchValue"
+    (input)="onInput($event)"
+  />
+  <button *ngIf="searchValue" class="clear-btn" (click)="clearSearch()">
+    <ion-icon name="close-circle"></ion-icon>
+  </button>
+</div>

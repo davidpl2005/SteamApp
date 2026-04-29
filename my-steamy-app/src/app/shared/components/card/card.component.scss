@@ -1,0 +1,186 @@
+.game-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-width: 220px;
+  max-width: 260px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  &:hover, &:active {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  }
+
+  &.compact {
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .card-img-wrapper {
+      width: 90px;
+      height: 90px;
+      flex-shrink: 0;
+    }
+
+    .card-body {
+      padding: 10px 14px;
+    }
+
+    .game-title {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.savings-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  background: linear-gradient(135deg, #ff6b35, #f7c59f);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  ion-icon {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    &.active {
+      color: #ff4d6d;
+      transform: scale(1.2);
+    }
+  }
+
+  &:hover {
+    background: rgba(255, 77, 109, 0.2);
+  }
+}
+
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+
+  .game-card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, rgba(10, 10, 20, 0.9));
+}
+
+.card-body {
+  padding: 14px 16px;
+}
+
+.game-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f0f0f0;
+  margin: 0 0 8px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+    line-clamp: 2;
+  margin-bottom: 10px;
+}
+
+.store-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+
+.store-name {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+.pricing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.original-price {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: line-through;
+}
+
+.sale-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #4ecca3;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.star-icon {
+  color: #ffd700;
+  font-size: 0.85rem;
+}
+
+.rating-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.rating-label {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,63 @@
+// ── Google Fonts ──
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+// ── CSS Variables ──
+:root {
+  --color-bg: #07090f;
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-border: rgba(255, 255, 255, 0.09);
+  --color-text: #f0f0f0;
+  --color-text-muted: rgba(255, 255, 255, 0.4);
+  --color-accent: #4ecca3;
+  --color-danger: #ff4d6d;
+  --color-warning: #ff6b35;
+  --color-gold: #ffd700;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+// ── Ionic Overrides ──
+ion-content {
+  --background: #07090f;
+}
+
+ion-tab-bar {
+  height: 64px;
+}
+
+// ── Modal Bottom Sheet ──
+.bottom-sheet-modal {
+  --border-radius: 28px 28px 0 0;
+  --background: transparent;
+
+  &::part(content) {
+    background: transparent;
+  }
+}
+
+// ── Typography ──
+* {
+  font-family: var(--font-body);
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+// ── Scrollbar ──
+::-webkit-scrollbar {
+  display: none;
+}
+
+// ── Ion Skeleton ──
+ion-skeleton-text {
+  --border-radius: 8px;
+  --background: rgba(255, 255, 255, 0.06);
+  --background-rgb: 255, 255, 255;
+}
+
+// ── Safe area ──
+ion-content {
+  --padding-top: 0;
+}

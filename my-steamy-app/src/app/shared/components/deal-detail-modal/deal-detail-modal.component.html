@@ -1,0 +1,72 @@
+<div class="modal-backdrop" (click)="dismiss()"></div>
+
+<div class="bottom-sheet">
+  <!-- Handle Bar -->
+  <div class="handle-bar"></div>
+
+  <!-- Close Button -->
+  <button class="close-btn" (click)="dismiss()">
+    <ion-icon name="close"></ion-icon>
+  </button>
+
+  <!-- Game Banner -->
+  <div class="banner-wrapper">
+    <img [src]="deal.thumb" [alt]="deal.title" class="banner-img" />
+    <div class="banner-gradient"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="sheet-content">
+    <!-- Header -->
+    <div class="game-header">
+      <div class="title-group">
+        <h2 class="game-title">{{ deal.title }}</h2>
+        <div class="store-row" *ngIf="store">
+          <img [src]="storeLogoUrl" class="store-logo" [alt]="store.storeName" />
+          <span class="store-name">{{ store.storeName }}</span>
+        </div>
+      </div>
+      <button class="fav-btn-modal" (click)="toggleFavorite()" [disabled]="isTogglingFav">
+        <ion-icon [name]="isFav ? 'heart' : 'heart-outline'" [class.active]="isFav"></ion-icon>
+      </button>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div class="stat-chip">
+        <ion-icon name="star" class="stat-icon gold"></ion-icon>
+        <span class="stat-value">{{ dealRating }}</span>
+        <span class="stat-label">Deal Rating</span>
+      </div>
+      <div class="stat-chip" *ngIf="deal.metacriticScore && deal.metacriticScore !== '0'">
+        <ion-icon name="trophy" class="stat-icon green"></ion-icon>
+        <span class="stat-value">{{ deal.metacriticScore }}</span>
+        <span class="stat-label">Metacritic</span>
+      </div>
+      <div class="stat-chip">
+        <ion-icon name="pricetag" class="stat-icon orange"></ion-icon>
+        <span class="stat-value">-{{ savingsPercent }}</span>
+        <span class="stat-label">Savings</span>
+      </div>
+    </div>
+
+    <!-- Pricing Block -->
+    <div class="pricing-block">
+      <div class="price-group">
+        <span class="price-label">Original Price</span>
+        <span class="original-price">${{ deal.normalPrice }}</span>
+      </div>
+      <ion-icon name="arrow-forward-outline" class="arrow-icon"></ion-icon>
+      <div class="price-group right">
+        <span class="price-label">Sale Price</span>
+        <span class="sale-price">${{ deal.salePrice }}</span>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <button class="view-deal-btn" (click)="viewDeal()">
+      <ion-icon name="open-outline"></ion-icon>
+      VIEW DEAL
+    </button>
+  </div>
+</div>
