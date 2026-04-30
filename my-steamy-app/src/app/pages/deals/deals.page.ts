@@ -48,13 +48,16 @@ export class DealsPage implements OnInit, OnDestroy {
 
   onSearchChange(query: string) {
     this.searchQuery = query;
+
     if (!query) {
       this.searchResults = [];
       this.isSearching = false;
       return;
     }
+
     this.isSearching = true;
     this.isLoading = true;
+
     this.gameProvider.getDealsWithStores(query).pipe(
       takeUntil(this.destroy$)
     ).subscribe({
@@ -82,16 +85,17 @@ export class DealsPage implements OnInit, OnDestroy {
         store: this.getStore(deal.storeID)
       },
       cssClass: 'bottom-sheet-modal',
-      breakpoints: [0, 0.85],
-      initialBreakpoint: 0.85,
-      backdropDismiss: true
+      backdropDismiss: true,
+      showBackdrop: true
     });
+
     await modal.present();
   }
 
   async onFavoriteToggle(deal: Deal) {
     const store = this.getStore(deal.storeID);
     const isFav = await this.gameProvider.isFavorite(deal.gameID);
+
     if (isFav) {
       await this.gameProvider.removeFavorite();
     } else if (store) {

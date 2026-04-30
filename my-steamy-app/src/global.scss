@@ -19,6 +19,7 @@
 // ── Ionic Overrides ──
 ion-content {
   --background: #07090f;
+  --padding-top: 0;
 }
 
 ion-tab-bar {
@@ -27,11 +28,18 @@ ion-tab-bar {
 
 // ── Modal Bottom Sheet ──
 .bottom-sheet-modal {
-  --border-radius: 28px 28px 0 0;
   --background: transparent;
+  --box-shadow: none;
 
   &::part(content) {
+    width: 100%;
+    height: 100%;
     background: transparent;
+    box-shadow: none;
+  }
+
+  &::part(backdrop) {
+    background: rgba(0, 0, 0, 0.45);
   }
 }
 
@@ -41,7 +49,12 @@ ion-tab-bar {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
 }
 
@@ -55,9 +68,4 @@ ion-skeleton-text {
   --border-radius: 8px;
   --background: rgba(255, 255, 255, 0.06);
   --background-rgb: 255, 255, 255;
-}
-
-// ── Safe area ──
-ion-content {
-  --padding-top: 0;
 }

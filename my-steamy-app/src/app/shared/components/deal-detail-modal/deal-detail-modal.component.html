@@ -1,9 +1,9 @@
 <div class="modal-backdrop" (click)="dismiss()"></div>
 
-<div class="bottom-sheet">
+<div class="bottom-sheet" (click)="$event.stopPropagation()">
   <div class="handle-bar"></div>
 
-  <button class="close-btn" (click)="dismiss()">
+  <button class="close-btn" type="button" (click)="dismiss()">
     <ion-icon name="close"></ion-icon>
   </button>
 
@@ -24,7 +24,11 @@
           </div>
         </div>
 
-        <button class="fav-btn-modal" (click)="toggleFavorite()" [disabled]="isTogglingFav">
+        <button
+          class="fav-btn-modal"
+          type="button"
+          (click)="toggleFavorite()"
+          [disabled]="isTogglingFav">
           <ion-icon
             [name]="isFav ? 'heart' : 'heart-outline'"
             [class.active]="isFav">
@@ -69,7 +73,7 @@
   </div>
 
   <div class="fixed-cta">
-    <button class="view-deal-btn" (click)="viewDeal()">
+    <button class="view-deal-btn" type="button" (click)="viewDeal()">
       <ion-icon name="open-outline"></ion-icon>
       VIEW DEAL
     </button>

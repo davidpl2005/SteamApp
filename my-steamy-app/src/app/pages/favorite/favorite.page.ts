@@ -25,7 +25,6 @@ export class FavoritePage implements OnInit {
     await this.loadFavorite();
   }
 
-  // Called when this tab becomes active
   async ionViewWillEnter() {
     await this.loadFavorite();
   }
@@ -33,6 +32,7 @@ export class FavoritePage implements OnInit {
   async loadFavorite() {
     this.isLoading = true;
     this.favorite = await this.gameProvider.getFavorite();
+
     if (this.favorite) {
       this.gameProvider.getStores().subscribe(stores => {
         this.stores = stores;
@@ -49,6 +49,7 @@ export class FavoritePage implements OnInit {
 
   get storeLogoUrl(): string {
     if (!this.favorite) return '';
+
     const store = this.getStore(this.favorite.storeID);
     return store ? this.gameProvider.getStoreLogoUrl(store) : '';
   }
@@ -60,7 +61,7 @@ export class FavoritePage implements OnInit {
 
   async openDetail() {
     if (!this.favorite) return;
-    // Build a Deal-like object to pass to the modal
+
     const deal: Deal = {
       internalName: '',
       title: this.favorite.title,
@@ -82,6 +83,7 @@ export class FavoritePage implements OnInit {
       dealRating: this.favorite.dealRating,
       thumb: this.favorite.thumb
     };
+
     const modal = await this.modalCtrl.create({
       component: DealDetailModalComponent,
       componentProps: {
@@ -89,9 +91,10 @@ export class FavoritePage implements OnInit {
         store: this.getStore(this.favorite.storeID)
       },
       cssClass: 'bottom-sheet-modal',
-      breakpoints: [0, 0.85],
-      initialBreakpoint: 0.85
+      backdropDismiss: true,
+      showBackdrop: true
     });
+
     await modal.present();
   }
 
@@ -99,5 +102,6 @@ export class FavoritePage implements OnInit {
     await this.gameProvider.removeFavorite();
     this.favorite = null;
   }
+
   parseFloat = parseFloat;
 }
