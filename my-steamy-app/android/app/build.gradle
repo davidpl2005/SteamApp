@@ -1,10 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "io.ionic.starter"
+
+    namespace = "io.ionic.mysteamyapp"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "io.ionic.starter"
+        applicationId "io.ionic.mysteamyapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
