@@ -1,17 +1,21 @@
-<ion-tabs>
+<ion-router-outlet></ion-router-outlet>
 
-  <ion-tab-bar slot="bottom" class="custom-tab-bar">
+<ion-tab-bar slot="bottom" class="custom-tab-bar">
 
-    <ion-tab-button tab="deals" href="/tabs/deals">
-      <ion-icon name="pricetags"></ion-icon>
-      <ion-label>Deals</ion-label>
-    </ion-tab-button>
+  <ion-tab-button
+    class="tab-btn"
+    [class.tab-selected]="isActive('deals')"
+    (click)="goTo('deals')">
+    <ion-icon name="pricetags"></ion-icon>
+    <ion-label>Deals</ion-label>
+  </ion-tab-button>
 
-    <ion-tab-button tab="favorite" href="/tabs/favorite">
-      <ion-icon name="heart"></ion-icon>
-      <ion-label>Favorite</ion-label>
-    </ion-tab-button>
+  <ion-tab-button
+    class="tab-btn"
+    [class.tab-selected]="isActive('favorite')"
+    (click)="goTo('favorite')">
+    <ion-icon name="heart"></ion-icon>
+    <ion-label>Favorite</ion-label>
+  </ion-tab-button>
 
-  </ion-tab-bar>
-
-</ion-tabs>
+</ion-tab-bar>
