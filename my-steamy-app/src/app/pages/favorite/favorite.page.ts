@@ -19,7 +19,7 @@ export class FavoritePage implements OnInit {
   constructor(
     private gameProvider: GameProviderService,
     private modalCtrl: ModalController
-  ) {}
+  ) { }
 
   async ngOnInit() {
     await this.loadFavorite();
@@ -101,6 +101,11 @@ export class FavoritePage implements OnInit {
   async removeFavorite() {
     await this.gameProvider.removeFavorite();
     this.favorite = null;
+  }
+
+  hideBrokenImage(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.style.display = 'none';
   }
 
   parseFloat = parseFloat;

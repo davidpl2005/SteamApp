@@ -154,11 +154,12 @@
 }
 
 .fav-store-logo {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.6;
+  opacity: 1;
+  filter: none;
+  flex-shrink: 0;
 }
 
 .fav-store-name {

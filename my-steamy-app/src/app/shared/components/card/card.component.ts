@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
   @Input() deal!: Deal;
   @Input() store?: Store;
   @Input() compact = false;
+
   @Output() cardClick = new EventEmitter<Deal>();
   @Output() favoriteToggle = new EventEmitter<Deal>();
 
@@ -33,6 +34,11 @@ export class CardComponent implements OnInit {
 
   get dealRating(): string {
     return parseFloat(this.deal.dealRating).toFixed(1);
+  }
+
+  hideBrokenImage(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.style.display = 'none';
   }
 
   onCardClick() {

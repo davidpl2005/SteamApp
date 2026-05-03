@@ -43,7 +43,10 @@
 
         <!-- Store -->
         <div class="fav-store" *ngIf="getStore(favorite.storeID) as store">
-          <img [src]="storeLogoUrl" class="fav-store-logo" [alt]="store.storeName" />
+
+          <img *ngIf="storeLogoUrl" [src]="storeLogoUrl" class="fav-store-logo" [alt]="store.storeName"
+            (error)="hideBrokenImage($event)" />
+
           <span class="fav-store-name">{{ store.storeName }}</span>
         </div>
 

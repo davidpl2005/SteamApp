@@ -20,7 +20,7 @@ export class DealDetailModalComponent implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     private gameProvider: GameProviderService
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.isFav = await this.gameProvider.isFavorite(this.deal.gameID);
@@ -57,6 +57,11 @@ export class DealDetailModalComponent implements OnInit {
     } finally {
       this.isTogglingFav = false;
     }
+  }
+
+  hideBrokenImage(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.style.display = 'none';
   }
 
   dismiss() {

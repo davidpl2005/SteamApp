@@ -19,7 +19,12 @@
           <h2 class="game-title">{{ deal.title }}</h2>
 
           <div class="store-row" *ngIf="store">
-            <img [src]="storeLogoUrl" class="store-logo" [alt]="store.storeName" />
+            <img
+              *ngIf="storeLogoUrl"
+              [src]="storeLogoUrl"
+              class="store-logo"
+              [alt]="store.storeName"
+              (error)="hideBrokenImage($event)" />
             <span class="store-name">{{ store.storeName }}</span>
           </div>
         </div>
