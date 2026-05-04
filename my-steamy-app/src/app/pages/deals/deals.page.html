@@ -1,11 +1,15 @@
 <ion-content class="deals-content">
-  <div class="hero">
-    <div>
+  <section class="hero">
+    <div class="hero-copy">
       <span class="eyebrow">Steam Deals</span>
       <h1>Encuentra ofertas épicas</h1>
-      <p>Busca juegos, compara precios y guarda tu favorito para el widget.</p>
+      <p>Busca juegos, compara precios y guarda tu favorito para verlo en el widget.</p>
     </div>
-  </div>
+    <div class="hero-badge">
+      <ion-icon name="sparkles-outline"></ion-icon>
+      <span>Blue picks</span>
+    </div>
+  </section>
 
   <div class="search-wrap">
     <app-input (searched)="onSearch($event)"></app-input>
@@ -15,9 +19,9 @@
     <div class="section-header">
       <div>
         <h2>Top ofertas</h2>
-        <p>Promociones destacadas de hoy</p>
+        <p>Promociones destacadas para descubrir hoy</p>
       </div>
-      <ion-icon name="flame-outline"></ion-icon>
+      <ion-icon name="flash-outline"></ion-icon>
     </div>
 
     <div class="carousel" *ngIf="!isLoading; else skeletonCarousel">
@@ -74,7 +78,7 @@
 
     <ng-template #emptyState>
       <div class="empty-state">
-        <ion-icon name="sad-outline"></ion-icon>
+        <ion-icon name="cloud-offline-outline"></ion-icon>
         <h3>No encontramos juegos</h3>
         <p>Intenta con otro nombre o una palabra más corta.</p>
       </div>

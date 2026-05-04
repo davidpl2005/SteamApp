@@ -1,10 +1,14 @@
 <div class="card" (click)="cardClicked.emit(deal)">
-
   <div class="image">
     <img [src]="deal.thumb" alt="game" />
     <div class="overlay"></div>
 
-    <button class="favorite-btn" (click)="onFavorite($event)">
+    <span class="rating">
+      <ion-icon name="star-outline"></ion-icon>
+      {{ deal.dealRating }}
+    </span>
+
+    <button class="favorite-btn" (click)="onFavorite($event)" aria-label="Toggle favorite">
       <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline'"></ion-icon>
     </button>
   </div>
@@ -23,5 +27,4 @@
       <span class="discount">-{{ savings }}</span>
     </div>
   </div>
-
 </div>

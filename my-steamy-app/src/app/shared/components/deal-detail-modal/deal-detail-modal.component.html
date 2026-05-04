@@ -1,38 +1,42 @@
 <ion-content class="modal-content">
-
-  <!-- HEADER -->
   <div class="header">
-    <ion-button fill="clear" (click)="dismiss()">
+    <ion-button fill="clear" (click)="dismiss()" aria-label="Cerrar detalle">
       <ion-icon name="close-outline"></ion-icon>
     </ion-button>
   </div>
 
-  <!-- IMAGEN -->
   <div class="image-wrapper">
-    <img [src]="deal.thumb" />
+    <img [src]="deal.thumb" alt="game cover" />
     <div class="overlay"></div>
+    <span class="deal-chip">-{{ savings }}</span>
   </div>
 
-  <!-- CONTENIDO -->
   <div class="content">
-
     <h2>{{ deal.title }}</h2>
 
     <div class="store-row">
-      <img *ngIf="storeLogo" [src]="storeLogo" />
+      <img *ngIf="storeLogo" [src]="storeLogo" alt="store logo" />
       <span>{{ storeName }}</span>
     </div>
 
-    <div class="prices">
-      <span class="sale">${{ deal.salePrice }}</span>
-      <span class="normal">${{ deal.normalPrice }}</span>
-      <span class="discount">-{{ savings }}</span>
+    <div class="price-card">
+      <div>
+        <span class="label">Oferta</span>
+        <strong>${{ deal.salePrice }}</strong>
+      </div>
+      <div>
+        <span class="label">Antes</span>
+        <span class="normal">${{ deal.normalPrice }}</span>
+      </div>
+      <div>
+        <span class="label">Rating</span>
+        <span class="rating">{{ deal.dealRating }}</span>
+      </div>
     </div>
 
-    <ion-button expand="block" color="success" (click)="openDeal()">
+    <ion-button expand="block" color="primary" (click)="openDeal()">
       Ver oferta
+      <ion-icon slot="end" name="open-outline"></ion-icon>
     </ion-button>
-
   </div>
-
 </ion-content>

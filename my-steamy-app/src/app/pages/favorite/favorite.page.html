@@ -1,24 +1,29 @@
 <ion-content class="favorite-content">
-
-  <div class="hero">
+  <section class="hero">
     <div>
       <span class="eyebrow">Your Pick</span>
       <h1>Juego favorito</h1>
-      <p>Este juego se muestra en tu widget Android.</p>
+      <p>Este juego se muestra en tu widget Android sin tocar su configuración nativa.</p>
     </div>
-  </div>
+    <ion-icon name="heart-circle-outline"></ion-icon>
+  </section>
 
   <ng-container *ngIf="favorite; else emptyState">
-
-    <div class="favorite-card">
+    <article class="favorite-card" (click)="openDetail()">
       <div class="image-wrapper">
         <img [src]="favorite.thumb" alt="game" />
         <div class="overlay"></div>
+        <span class="floating-badge">Favorito</span>
       </div>
 
       <div class="content">
-        <h2>{{ favorite.title }}</h2>
-        <p class="store">{{ favorite.storeName }}</p>
+        <div class="title-row">
+          <div>
+            <h2>{{ favorite.title }}</h2>
+            <p class="store">{{ favorite.storeName }}</p>
+          </div>
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </div>
 
         <div class="prices">
           <span class="sale">${{ favorite.salePrice }}</span>
@@ -26,20 +31,18 @@
           <span class="discount">-{{ favorite.savings | number:'1.0-0' }}%</span>
         </div>
 
-        <ion-button expand="block" color="danger" (click)="removeFavorite()">
+        <ion-button expand="block" fill="outline" color="primary" (click)="removeFavorite(); $event.stopPropagation()">
           Eliminar favorito
         </ion-button>
       </div>
-    </div>
-
+    </article>
   </ng-container>
 
   <ng-template #emptyState>
     <div class="empty">
       <ion-icon name="heart-outline"></ion-icon>
       <h3>No tienes favorito</h3>
-      <p>Ve a Deals y selecciona uno.</p>
+      <p>Ve a Deals y selecciona uno para activar la tarjeta del widget.</p>
     </div>
   </ng-template>
-
 </ion-content>
