@@ -5,37 +5,27 @@ import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  standalone: false
+  standalone: false,
 })
 export class InputComponent implements OnDestroy {
-  @Output() searchChange = new EventEmitter<string>();
+  @Output() searched = new EventEmitter<string>();
 
-  searchValue = '';
   private searchSubject = new Subject<string>();
   private destroy$ = new Subject<void>();
 
   constructor() {
     this.searchSubject.pipe(
-      debounceTime(450),
+      debounceTime(400),
       distinctUntilChanged(),
       takeUntil(this.destroy$)
-    ).subscribe(value => {
-      this.searchChange.emit(value);
-    });
+    ).subscribe(query => this.searched.emit(query));
   }
 
-  onInput(event: any) {
-    const value = event.detail?.value ?? event.target?.value ?? '';
-    this.searchValue = value;
-    this.searchSubject.next(value.trim());
+  onInput(event: CustomEvent): void {
+    this.searchSubject.next(event.detail.value ?? '');
   }
 
-  clearSearch() {
-    this.searchValue = '';
-    this.searchSubject.next('');
-  }
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

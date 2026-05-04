@@ -1,87 +1,45 @@
-<ion-content class="fav-content" [fullscreen]="true">
+<ion-content class="favorite-content">
 
-  <!-- Background -->
-  <div class="page-bg">
-    <div class="bg-orb orb-a"></div>
-    <div class="bg-orb orb-b"></div>
-  </div>
-
-  <!-- Header -->
-  <div class="page-header">
-    <p class="header-subtitle">Saved</p>
-    <h1 class="header-title">My Favorite ❤️</h1>
-  </div>
-
-  <!-- Skeleton -->
-  <div class="fav-card skeleton-fav" *ngIf="isLoading">
-    <ion-skeleton-text animated class="sk-banner"></ion-skeleton-text>
-    <div class="sk-body">
-      <ion-skeleton-text animated class="sk-t1"></ion-skeleton-text>
-      <ion-skeleton-text animated class="sk-t2"></ion-skeleton-text>
-      <ion-skeleton-text animated class="sk-t3"></ion-skeleton-text>
+  <div class="hero">
+    <div>
+      <span class="eyebrow">Your Pick</span>
+      <h1>Juego favorito</h1>
+      <p>Este juego se muestra en tu widget Android.</p>
     </div>
   </div>
 
-  <!-- Favorite Card -->
-  <ng-container *ngIf="!isLoading && favorite">
-    <div class="fav-card" (click)="openDetail()">
+  <ng-container *ngIf="favorite; else emptyState">
 
-      <!-- Banner -->
-      <div class="fav-banner-wrapper">
-        <img [src]="favorite.thumb" [alt]="favorite.title" class="fav-banner" />
-        <div class="fav-banner-gradient"></div>
-        <div class="fav-badge">❤️ Favorite</div>
-        <!-- Remove btn -->
-        <button class="remove-btn" (click)="$event.stopPropagation(); removeFavorite()">
-          <ion-icon name="trash-outline"></ion-icon>
-        </button>
+    <div class="favorite-card">
+      <div class="image-wrapper">
+        <img [src]="favorite.thumb" alt="game" />
+        <div class="overlay"></div>
       </div>
 
-      <!-- Info -->
-      <div class="fav-info">
-        <h2 class="fav-title">{{ favorite.title }}</h2>
+      <div class="content">
+        <h2>{{ favorite.title }}</h2>
+        <p class="store">{{ favorite.storeName }}</p>
 
-        <!-- Store -->
-        <div class="fav-store" *ngIf="getStore(favorite.storeID) as store">
-
-          <img *ngIf="storeLogoUrl" [src]="storeLogoUrl" class="fav-store-logo" [alt]="store.storeName"
-            (error)="hideBrokenImage($event)" />
-
-          <span class="fav-store-name">{{ store.storeName }}</span>
+        <div class="prices">
+          <span class="sale">${{ favorite.salePrice }}</span>
+          <span class="normal">${{ favorite.normalPrice }}</span>
+          <span class="discount">-{{ favorite.savings | number:'1.0-0' }}%</span>
         </div>
 
-        <!-- Pricing -->
-        <div class="fav-pricing">
-          <span class="fav-original">${{ favorite.normalPrice }}</span>
-          <span class="fav-sale">${{ favorite.salePrice }}</span>
-          <span class="fav-savings">-{{ savingsPercent }}</span>
-        </div>
-
-        <!-- Rating -->
-        <div class="fav-rating">
-          <ion-icon name="star" class="fav-star"></ion-icon>
-          <span class="fav-rating-val">{{ parseFloat(favorite.dealRating).toFixed(1) }}</span>
-          <span class="fav-rating-label">Deal Rating</span>
-        </div>
-
-        <!-- CTA -->
-        <div class="fav-cta">
-          <ion-icon name="eye-outline"></ion-icon>
-          <span>View Details</span>
-        </div>
+        <ion-button expand="block" color="danger" (click)="removeFavorite()">
+          Eliminar favorito
+        </ion-button>
       </div>
     </div>
+
   </ng-container>
 
-  <!-- Empty State -->
-  <div class="empty-fav" *ngIf="!isLoading && !favorite">
-    <div class="empty-emoji">🎮</div>
-    <h2>No Favorite Yet</h2>
-    <p>Go to the <strong>Deals</strong> tab and tap the ❤️ on any game to save it here.</p>
-    <div class="empty-hint">
-      <ion-icon name="arrow-down-circle-outline"></ion-icon>
-      <span>Check the Deals tab below</span>
+  <ng-template #emptyState>
+    <div class="empty">
+      <ion-icon name="heart-outline"></ion-icon>
+      <h3>No tienes favorito</h3>
+      <p>Ve a Deals y selecciona uno.</p>
     </div>
-  </div>
+  </ng-template>
 
 </ion-content>

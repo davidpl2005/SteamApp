@@ -1,53 +1,35 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Deal, Store } from '../../interfaces/models';
-import { GameProviderService } from '../../services/game-provider.service';
+import { GameProviderService } from '../../services/game-provider';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  standalone: false
+  standalone: false,
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input() deal!: Deal;
-  @Input() store?: Store;
-  @Input() compact = false;
+  @Input() isFavorite = false;
+  @Output() favoriteToggled = new EventEmitter<Deal>();
+  @Output() cardClicked = new EventEmitter<Deal>();
 
-  @Output() cardClick = new EventEmitter<Deal>();
-  @Output() favoriteToggle = new EventEmitter<Deal>();
+  constructor(public gameProvider: GameProviderService) {}
 
-  isFav = false;
-
-  constructor(private gameProvider: GameProviderService) {}
-
-  async ngOnInit() {
-    this.isFav = await this.gameProvider.isFavorite(this.deal.gameID);
-  }
-
-  get storeLogoUrl(): string {
-    return this.store ? this.gameProvider.getStoreLogoUrl(this.store) : '';
-  }
-
-  get savingsPercent(): string {
+  get savings(): string {
     return Math.round(parseFloat(this.deal.savings)) + '%';
   }
 
-  get dealRating(): string {
-    return parseFloat(this.deal.dealRating).toFixed(1);
+  get storeName(): string {
+    return this.gameProvider.getStoreById(this.deal.storeID)?.storeName ?? 'Unknown';
   }
 
-  hideBrokenImage(event: Event) {
-    const img = event.target as HTMLImageElement;
-    img.style.display = 'none';
+  get storeLogo(): string {
+    return this.gameProvider.getStoreLogo(this.deal.storeID);
   }
 
-  onCardClick() {
-    this.cardClick.emit(this.deal);
-  }
-
-  async onFavoriteClick(event: Event) {
+  onFavorite(event: Event): void {
     event.stopPropagation();
-    this.favoriteToggle.emit(this.deal);
-    this.isFav = !this.isFav;
+    this.favoriteToggled.emit(this.deal);
   }
 }

@@ -1,33 +1,23 @@
 export interface Deal {
-  internalName: string;
-  title: string;
-  metacriticLink: string;
   dealID: string;
+  title: string;
   storeID: string;
   gameID: string;
   salePrice: string;
   normalPrice: string;
-  isOnSale: string;
   savings: string;
-  metacriticScore: string;
-  steamRatingText: string;
-  steamRatingPercent: string;
-  steamRatingCount: string;
-  steamAppID: string;
-  releaseDate: number;
-  lastChange: number;
   dealRating: string;
   thumb: string;
+  metacriticScore?: string;
 }
 
 export interface Store {
   storeID: string;
   storeName: string;
-  isActive: number;
   images: {
-    banner: string;
     logo: string;
     icon: string;
+    banner: string;
   };
 }
 

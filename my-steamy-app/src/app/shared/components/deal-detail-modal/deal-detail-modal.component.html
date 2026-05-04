@@ -1,86 +1,38 @@
-<div class="modal-backdrop" (click)="dismiss()"></div>
+<ion-content class="modal-content">
 
-<div class="bottom-sheet" (click)="$event.stopPropagation()">
-  <div class="handle-bar"></div>
-
-  <button class="close-btn" type="button" (click)="dismiss()">
-    <ion-icon name="close"></ion-icon>
-  </button>
-
-  <div class="sheet-scroll">
-    <div class="banner-wrapper">
-      <img [src]="deal.thumb" [alt]="deal.title" class="banner-img" />
-      <div class="banner-gradient"></div>
-    </div>
-
-    <div class="sheet-content">
-      <div class="game-header">
-        <div class="title-group">
-          <h2 class="game-title">{{ deal.title }}</h2>
-
-          <div class="store-row" *ngIf="store">
-            <img
-              *ngIf="storeLogoUrl"
-              [src]="storeLogoUrl"
-              class="store-logo"
-              [alt]="store.storeName"
-              (error)="hideBrokenImage($event)" />
-            <span class="store-name">{{ store.storeName }}</span>
-          </div>
-        </div>
-
-        <button
-          class="fav-btn-modal"
-          type="button"
-          (click)="toggleFavorite()"
-          [disabled]="isTogglingFav">
-          <ion-icon
-            [name]="isFav ? 'heart' : 'heart-outline'"
-            [class.active]="isFav">
-          </ion-icon>
-        </button>
-      </div>
-
-      <div class="stats-row">
-        <div class="stat-chip">
-          <ion-icon name="star" class="stat-icon gold"></ion-icon>
-          <span class="stat-value">{{ dealRating }}</span>
-          <span class="stat-label">Deal Rating</span>
-        </div>
-
-        <div class="stat-chip" *ngIf="deal.metacriticScore && deal.metacriticScore !== '0'">
-          <ion-icon name="trophy" class="stat-icon green"></ion-icon>
-          <span class="stat-value">{{ deal.metacriticScore }}</span>
-          <span class="stat-label">Metacritic</span>
-        </div>
-
-        <div class="stat-chip">
-          <ion-icon name="pricetag" class="stat-icon orange"></ion-icon>
-          <span class="stat-value">-{{ savingsPercent }}</span>
-          <span class="stat-label">Savings</span>
-        </div>
-      </div>
-
-      <div class="pricing-block">
-        <div class="price-group">
-          <span class="price-label">Original Price</span>
-          <span class="original-price">${{ deal.normalPrice }}</span>
-        </div>
-
-        <ion-icon name="arrow-forward-outline" class="arrow-icon"></ion-icon>
-
-        <div class="price-group right">
-          <span class="price-label">Sale Price</span>
-          <span class="sale-price">${{ deal.salePrice }}</span>
-        </div>
-      </div>
-    </div>
+  <!-- HEADER -->
+  <div class="header">
+    <ion-button fill="clear" (click)="dismiss()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-button>
   </div>
 
-  <div class="fixed-cta">
-    <button class="view-deal-btn" type="button" (click)="viewDeal()">
-      <ion-icon name="open-outline"></ion-icon>
-      VIEW DEAL
-    </button>
+  <!-- IMAGEN -->
+  <div class="image-wrapper">
+    <img [src]="deal.thumb" />
+    <div class="overlay"></div>
   </div>
-</div>
+
+  <!-- CONTENIDO -->
+  <div class="content">
+
+    <h2>{{ deal.title }}</h2>
+
+    <div class="store-row">
+      <img *ngIf="storeLogo" [src]="storeLogo" />
+      <span>{{ storeName }}</span>
+    </div>
+
+    <div class="prices">
+      <span class="sale">${{ deal.salePrice }}</span>
+      <span class="normal">${{ deal.normalPrice }}</span>
+      <span class="discount">-{{ savings }}</span>
+    </div>
+
+    <ion-button expand="block" color="success" (click)="openDeal()">
+      Ver oferta
+    </ion-button>
+
+  </div>
+
+</ion-content>

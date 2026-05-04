@@ -11,14 +11,13 @@ import { DealDetailModalComponent } from './components/deal-detail-modal/deal-de
     InputComponent,
     DealDetailModalComponent
   ],
-  imports: [
-    CommonModule,
-    IonicModule
-  ],
+  imports: [CommonModule, IonicModule],
   exports: [
     CardComponent,
     InputComponent,
-    DealDetailModalComponent
+    DealDetailModalComponent,
+    CommonModule,
+    IonicModule
   ]
 })
 export class SharedModule {}

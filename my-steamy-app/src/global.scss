@@ -1,71 +1,23 @@
-// ── Google Fonts ──
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import "~@ionic/angular/css/core.css";
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
 
-// ── CSS Variables ──
-:root {
-  --color-bg: #07090f;
-  --color-surface: rgba(255, 255, 255, 0.05);
-  --color-border: rgba(255, 255, 255, 0.09);
-  --color-text: #f0f0f0;
-  --color-text-muted: rgba(255, 255, 255, 0.4);
-  --color-accent: #4ecca3;
-  --color-danger: #ff4d6d;
-  --color-warning: #ff6b35;
-  --color-gold: #ffd700;
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-}
+* { box-sizing: border-box; }
 
-// ── Ionic Overrides ──
 ion-content {
-  --background: #07090f;
-  --padding-top: 0;
+  --background: #0a0a16;
 }
 
-ion-tab-bar {
-  height: 64px;
+.custom-tab-bar {
+  --background: rgba(10, 10, 22, 0.95);
+  --border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  --color: rgba(255,255,255,0.4);
+  --color-selected: #00e676;
 }
 
-// ── Modal Bottom Sheet ──
-.bottom-sheet-modal {
-  --background: transparent;
-  --box-shadow: none;
-
-  &::part(content) {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    box-shadow: none;
-  }
-
-  &::part(backdrop) {
-    background: rgba(0, 0, 0, 0.45);
-  }
-}
-
-// ── Typography ──
-* {
-  font-family: var(--font-body);
-  box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-}
-
-// ── Scrollbar ──
-::-webkit-scrollbar {
-  display: none;
-}
-
-// ── Ion Skeleton ──
-ion-skeleton-text {
-  --border-radius: 8px;
-  --background: rgba(255, 255, 255, 0.06);
-  --background-rgb: 255, 255, 255;
+ion-modal.deal-modal {
+  --background: #0f0f1a;
+  --border-radius: 20px 20px 0 0;
 }

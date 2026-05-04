@@ -4,18 +4,18 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabs',
     component: TabsPage,
     children: [
       {
         path: 'deals',
         loadChildren: () =>
-          import('../pages/deals/deals.module').then(m => m.DealsPageModule)
+          import('../pages/deals/deals-module').then(m => m.DealsPageModule)
       },
       {
         path: 'favorite',
         loadChildren: () =>
-          import('../pages/favorite/favorite.module').then(m => m.FavoritePageModule)
+          import('../pages/favorite/favorite-module').then(m => m.FavoritePageModule)
       },
       {
         path: '',
@@ -23,6 +23,11 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: '',
+    redirectTo: '/tabs/deals',
+    pathMatch: 'full'
   }
 ];
 

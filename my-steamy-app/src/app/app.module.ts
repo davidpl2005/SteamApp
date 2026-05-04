@@ -4,15 +4,13 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './core/core.module';
+import { CoreModule } from './core/core-module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    IonicModule.forRoot({
-      mode: 'md' // Material Design en todos los dispositivos para consistencia
-    }),
+    IonicModule.forRoot(),
     AppRoutingModule,
     CoreModule
   ],
