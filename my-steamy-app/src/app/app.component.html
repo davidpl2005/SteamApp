@@ -1,3 +1,19 @@
 <ion-app>
+  <div class="app-splash" *ngIf="showSplash" [class.app-splash--leaving]="splashLeaving">
+    <div class="app-splash__glow app-splash__glow--one"></div>
+    <div class="app-splash__glow app-splash__glow--two"></div>
+
+    <div class="app-splash__card">
+      <img src="assets/brand/logo-steamy.svg" alt="My Steamy App" class="app-splash__logo" />
+      <div class="app-splash__loader" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <h1>My Steamy App</h1>
+      <p>Encontrando las mejores ofertas</p>
+    </div>
+  </div>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

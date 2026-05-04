@@ -1,0 +1,141 @@
+.app-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(14, 165, 233, 0.34), transparent 32%),
+    radial-gradient(circle at 82% 78%, rgba(37, 99, 235, 0.38), transparent 34%),
+    linear-gradient(145deg, #0f172a 0%, #1e3a8a 52%, #1d4ed8 100%);
+  animation: splashIn 420ms ease-out both;
+}
+
+.app-splash--leaving {
+  animation: splashOut 520ms ease-in forwards;
+}
+
+.app-splash__glow {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 999px;
+  background: rgba(224, 242, 254, 0.18);
+  filter: blur(10px);
+  animation: floatGlow 2.4s ease-in-out infinite alternate;
+}
+
+.app-splash__glow--one {
+  top: -72px;
+  left: -56px;
+}
+
+.app-splash__glow--two {
+  right: -70px;
+  bottom: -78px;
+  animation-delay: 260ms;
+}
+
+.app-splash__card {
+  position: relative;
+  display: flex;
+  width: min(78vw, 320px);
+  min-height: 320px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 32px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.3);
+  color: #ffffff;
+  text-align: center;
+  backdrop-filter: blur(18px);
+  transform-origin: center;
+  animation: cardPop 650ms cubic-bezier(0.2, 0.9, 0.2, 1.2) both;
+}
+
+.app-splash__logo {
+  width: 132px;
+  height: 132px;
+  border-radius: 32px;
+  filter: drop-shadow(0 18px 28px rgba(15, 23, 42, 0.28));
+  animation: logoPulse 1.5s ease-in-out infinite;
+}
+
+.app-splash h1 {
+  margin: 22px 0 6px;
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.app-splash p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.app-splash__loader {
+  display: flex;
+  gap: 7px;
+  margin-top: 22px;
+}
+
+.app-splash__loader span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  animation: loaderBounce 850ms ease-in-out infinite;
+}
+
+.app-splash__loader span:nth-child(2) {
+  animation-delay: 130ms;
+}
+
+.app-splash__loader span:nth-child(3) {
+  animation-delay: 260ms;
+}
+
+@keyframes splashIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes splashOut {
+  to {
+    opacity: 0;
+    transform: scale(1.03);
+    visibility: hidden;
+  }
+}
+
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.04); }
+}
+
+@keyframes loaderBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.55; }
+  40% { transform: translateY(-7px); opacity: 1; }
+}
+
+@keyframes floatGlow {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(18px, 22px, 0) scale(1.16); }
+}

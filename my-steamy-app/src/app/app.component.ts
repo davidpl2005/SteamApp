@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   standalone: false,
 })
-export class AppComponent {
-  constructor() {}
+export class AppComponent implements OnInit {
+  showSplash = true;
+  splashLeaving = false;
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.splashLeaving = true;
+
+      setTimeout(() => {
+        this.showSplash = false;
+      }, 520);
+    }, 1800);
+  }
 }
