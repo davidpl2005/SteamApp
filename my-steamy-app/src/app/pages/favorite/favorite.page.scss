@@ -10,13 +10,14 @@
     padding: 22px 20px;
     border-radius: var(--app-radius-xl);
     background:
-      radial-gradient(circle at top right, rgba(186, 230, 253, 0.9), transparent 38%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(219, 234, 254, 0.9));
-    border: 1px solid var(--app-border);
-    box-shadow: var(--app-shadow);
+      radial-gradient(circle at top right, rgba(255, 92, 122, 0.16), transparent 38%),
+      linear-gradient(135deg, rgba(27, 40, 56, 0.96), rgba(12, 23, 36, 0.92));
+    border: 1px solid rgba(102, 192, 244, 0.15);
+    box-shadow: var(--app-shadow), var(--app-glow);
+    animation: steamFadeUp 0.45s ease both;
 
     .eyebrow {
-      color: var(--app-primary);
+      color: var(--app-danger);
       font-size: 12px;
       font-weight: 950;
       letter-spacing: 0.08em;
@@ -39,9 +40,9 @@
     }
 
     > ion-icon {
-      color: var(--app-primary);
+      color: var(--app-danger);
       font-size: 46px;
-      filter: drop-shadow(0 10px 18px rgba(29, 78, 216, 0.18));
+      filter: drop-shadow(0 10px 18px rgba(255, 92, 122, 0.18));
     }
   }
 
@@ -49,16 +50,17 @@
     margin: 16px;
     border-radius: 30px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.96);
-    border: 1px solid var(--app-border);
+    background: linear-gradient(180deg, rgba(31, 49, 70, 0.98), rgba(13, 24, 38, 0.98));
+    border: 1px solid rgba(102, 192, 244, 0.15);
     box-shadow: var(--app-shadow);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    animation: steamFadeUp 0.45s ease both;
 
-    &:active { transform: scale(0.985); }
+    &:active { transform: scale(0.985); border-color: rgba(102, 192, 244, 0.34); }
 
     .image-wrapper {
       position: relative;
-      background: #dbeafe;
+      background: #0c1724;
 
       img {
         width: 100%;
@@ -70,19 +72,23 @@
       .overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom, transparent 35%, rgba(29, 78, 216, 0.72));
+        background:
+          radial-gradient(circle at 25% 0%, rgba(255, 92, 122, 0.14), transparent 45%),
+          linear-gradient(to bottom, transparent 28%, rgba(7, 17, 31, 0.86));
       }
 
       .floating-badge {
         position: absolute;
         left: 16px;
         bottom: 16px;
-        padding: 7px 11px;
+        padding: 8px 12px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.9);
-        color: var(--app-primary);
+        background: rgba(255, 92, 122, 0.14);
+        color: #ff8ba1;
+        border: 1px solid rgba(255, 92, 122, 0.28);
         font-size: 12px;
         font-weight: 950;
+        backdrop-filter: blur(12px);
       }
     }
 
@@ -114,7 +120,7 @@
       .store {
         color: var(--app-muted);
         font-size: 12px;
-        font-weight: 750;
+        font-weight: 800;
         margin: 6px 0 12px;
       }
 
@@ -125,16 +131,22 @@
         flex-wrap: wrap;
         margin-bottom: 16px;
 
-        .sale { color: var(--app-primary); font-size: 24px; font-weight: 950; }
-        .normal { color: #94a3b8; font-size: 13px; text-decoration: line-through; font-weight: 750; }
+        .sale { color: #beee11; font-size: 24px; font-weight: 950; }
+        .normal { color: #71808f; font-size: 13px; text-decoration: line-through; font-weight: 750; }
         .discount {
-          background: linear-gradient(135deg, #dbeafe, #bae6fd);
-          color: #1e3a8a;
+          background: linear-gradient(135deg, #a4d007, #75b022);
+          color: #07111f;
           font-size: 12px;
-          padding: 5px 8px;
-          border-radius: 999px;
+          padding: 6px 9px;
+          border-radius: 8px;
           font-weight: 950;
         }
+      }
+
+      ion-button {
+        --border-color: rgba(255, 92, 122, 0.38);
+        --color: #ff8ba1;
+        --background: rgba(255, 92, 122, 0.08);
       }
     }
   }
@@ -144,7 +156,7 @@
     padding: 38px 22px;
     border-radius: var(--app-radius-xl);
     text-align: center;
-    background: rgba(255, 255, 255, 0.92);
+    background: var(--app-surface);
     border: 1px solid var(--app-border);
     box-shadow: var(--app-shadow);
 

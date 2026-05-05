@@ -1,35 +1,40 @@
 // Ionic theme variables
 :root {
-  --ion-color-primary: #1d4ed8;
-  --ion-color-primary-rgb: 29, 78, 216;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #1945be;
-  --ion-color-primary-tint: #3460dc;
+  --ion-color-primary: #66c0f4;
+  --ion-color-primary-rgb: 102, 192, 244;
+  --ion-color-primary-contrast: #06121f;
+  --ion-color-primary-contrast-rgb: 6, 18, 31;
+  --ion-color-primary-shade: #5aa9d7;
+  --ion-color-primary-tint: #75c6f5;
 
-  --ion-color-secondary: #38bdf8;
-  --ion-color-secondary-rgb: 56, 189, 248;
-  --ion-color-secondary-contrast: #072033;
-  --ion-color-secondary-contrast-rgb: 7, 32, 51;
-  --ion-color-secondary-shade: #31a6da;
-  --ion-color-secondary-tint: #4cc4f9;
+  --ion-color-secondary: #a4d007;
+  --ion-color-secondary-rgb: 164, 208, 7;
+  --ion-color-secondary-contrast: #071104;
+  --ion-color-secondary-contrast-rgb: 7, 17, 4;
+  --ion-color-secondary-shade: #90b706;
+  --ion-color-secondary-tint: #add520;
 
-  --ion-color-success: #0ea5e9;
-  --ion-color-success-rgb: 14, 165, 233;
+  --ion-color-success: #75b022;
+  --ion-color-success-rgb: 117, 176, 34;
   --ion-color-success-contrast: #ffffff;
   --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #0c91cd;
-  --ion-color-success-tint: #26aeeB;
+  --ion-color-success-shade: #679b1e;
+  --ion-color-success-tint: #83b838;
 
-  --app-bg: #eef6ff;
-  --app-surface: rgba(255, 255, 255, 0.88);
-  --app-surface-strong: #ffffff;
-  --app-text: #0f172a;
-  --app-muted: #64748b;
-  --app-primary: #1d4ed8;
-  --app-primary-soft: #dbeafe;
-  --app-accent: #38bdf8;
-  --app-border: rgba(29, 78, 216, 0.13);
-  --app-shadow: 0 18px 45px rgba(30, 64, 175, 0.16);
+  --app-bg: #07111f;
+  --app-bg-2: #0f1b2b;
+  --app-surface: rgba(23, 38, 56, 0.82);
+  --app-surface-strong: #1b2838;
+  --app-surface-hover: #24364c;
+  --app-text: #f5f7fa;
+  --app-muted: #8f98a5;
+  --app-primary: #66c0f4;
+  --app-primary-soft: rgba(102, 192, 244, 0.14);
+  --app-accent: #a4d007;
+  --app-accent-soft: rgba(164, 208, 7, 0.16);
+  --app-danger: #ff5c7a;
+  --app-border: rgba(102, 192, 244, 0.16);
+  --app-glow: 0 0 28px rgba(102, 192, 244, 0.18);
+  --app-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
   --app-radius-xl: 28px;
 }

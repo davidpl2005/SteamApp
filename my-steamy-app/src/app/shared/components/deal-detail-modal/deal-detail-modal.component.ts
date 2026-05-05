@@ -26,6 +26,15 @@ export class DealDetailModalComponent {
     return this.gameProvider.getStoreById(this.deal.storeID)?.storeName ?? 'Unknown';
   }
 
+  get metacriticScore(): string {
+    const score = this.deal?.metacriticScore;
+    return score && score !== '0' ? score : 'N/A';
+  }
+
+  get hasMetacriticScore(): boolean {
+    return this.metacriticScore !== 'N/A';
+  }
+
   get storeLogo(): string {
     return this.gameProvider.getStoreLogo(this.deal.storeID);
   }

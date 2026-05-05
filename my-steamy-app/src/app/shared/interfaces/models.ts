@@ -31,6 +31,7 @@ export interface FavoriteGame {
   normalPrice: string;
   savings: string;
   dealRating: string;
+  metacriticScore?: string;
   dealID: string;
 }
 

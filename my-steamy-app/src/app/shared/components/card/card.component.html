@@ -4,11 +4,13 @@
     <div class="overlay"></div>
 
     <span class="rating">
-      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star"></ion-icon>
       {{ deal.dealRating }}
     </span>
 
-    <button class="favorite-btn" (click)="onFavorite($event)" aria-label="Toggle favorite">
+    <span class="hot-chip">STEAM DEAL</span>
+
+    <button class="favorite-btn" [class.active]="isFavorite" (click)="onFavorite($event)" aria-label="Toggle favorite">
       <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline'"></ion-icon>
     </button>
   </div>
@@ -22,9 +24,11 @@
     </div>
 
     <div class="prices">
-      <span class="sale">${{ deal.salePrice }}</span>
-      <span class="normal">${{ deal.normalPrice }}</span>
       <span class="discount">-{{ savings }}</span>
+      <div class="price-stack">
+        <span class="normal">${{ deal.normalPrice }}</span>
+        <span class="sale">${{ deal.salePrice }}</span>
+      </div>
     </div>
   </div>
 </div>

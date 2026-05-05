@@ -44,6 +44,7 @@ export class FavoritePage {
       normalPrice: this.favorite.normalPrice,
       savings: this.favorite.savings,
       dealRating: this.favorite.dealRating,
+      metacriticScore: this.favorite.metacriticScore,
       thumb: this.favorite.thumb
     };
     const modal = await this.modalCtrl.create({

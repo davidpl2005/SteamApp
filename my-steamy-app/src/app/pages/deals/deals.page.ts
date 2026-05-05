@@ -89,6 +89,7 @@ export class DealsPage implements OnInit, OnDestroy {
         normalPrice: deal.normalPrice,
         savings: deal.savings,
         dealRating: deal.dealRating,
+        metacriticScore: deal.metacriticScore,
         dealID: deal.dealID
       };
       await this.gameProvider.saveFavorite(fav);

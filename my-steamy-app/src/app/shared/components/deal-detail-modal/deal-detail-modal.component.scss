@@ -1,5 +1,5 @@
 .modal-content {
-  --background: #f8fbff;
+  --background: #07111f;
 
   .header {
     position: absolute;
@@ -8,22 +8,23 @@
     z-index: 10;
 
     ion-button {
-      --color: var(--app-primary);
-      --background: rgba(255, 255, 255, 0.9);
-      --box-shadow: 0 12px 22px rgba(30, 64, 175, 0.16);
+      --color: var(--app-text);
+      --background: rgba(7, 17, 31, 0.78);
+      --box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32), inset 0 0 0 1px rgba(102, 192, 244, 0.16);
       width: 42px;
       height: 42px;
       border-radius: 50%;
+      backdrop-filter: blur(14px);
     }
   }
 
   .image-wrapper {
     position: relative;
-    background: #dbeafe;
+    background: #0c1724;
 
     img {
       width: 100%;
-      height: 258px;
+      height: 268px;
       object-fit: cover;
       display: block;
     }
@@ -31,29 +32,32 @@
     .overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(248, 251, 255, 0), #f8fbff 92%);
+      background:
+        radial-gradient(circle at 30% 0%, rgba(102, 192, 244, 0.2), transparent 42%),
+        linear-gradient(to bottom, rgba(7, 17, 31, 0.05) 0%, rgba(7, 17, 31, 0.24) 42%, #07111f 96%);
     }
 
     .deal-chip {
       position: absolute;
       left: 18px;
       bottom: 22px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--app-primary);
-      font-size: 13px;
+      padding: 9px 13px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #a4d007, #75b022);
+      color: #07111f;
+      font-size: 14px;
       font-weight: 950;
-      box-shadow: 0 12px 24px rgba(30, 64, 175, 0.15);
+      box-shadow: 0 14px 28px rgba(164, 208, 7, 0.18);
     }
   }
 
   .content {
-    padding: 2px 20px 24px;
+    padding: 2px 20px 26px;
+    animation: steamFadeUp 0.42s ease both;
 
     h2 {
       color: var(--app-text);
-      font-size: 23px;
+      font-size: 24px;
       line-height: 1.12;
       font-weight: 950;
       letter-spacing: -0.04em;
@@ -66,41 +70,104 @@
       gap: 9px;
       margin-bottom: 15px;
 
-      img { width: 22px; height: 22px; object-fit: contain; }
-      span { color: var(--app-muted); font-size: 13px; font-weight: 800; }
+      img { width: 22px; height: 22px; object-fit: contain; border-radius: 5px; }
+      span { color: var(--app-muted); font-size: 13px; font-weight: 850; }
     }
 
     .price-card {
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
+      grid-template-columns: 1.2fr 1fr;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       padding: 12px;
       border-radius: 24px;
-      background: #ffffff;
-      border: 1px solid var(--app-border);
-      box-shadow: 0 14px 28px rgba(30, 64, 175, 0.1);
+      background: rgba(23, 38, 56, 0.84);
+      border: 1px solid rgba(102, 192, 244, 0.16);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
 
       > div {
         min-width: 0;
-        padding: 9px;
+        padding: 10px;
         border-radius: 18px;
-        background: #f1f7ff;
+        background: rgba(7, 17, 31, 0.42);
+        border: 1px solid rgba(255, 255, 255, 0.04);
       }
 
       .label {
         display: block;
         color: var(--app-muted);
         font-size: 10px;
-        font-weight: 900;
+        font-weight: 950;
         text-transform: uppercase;
-        letter-spacing: 0.07em;
+        letter-spacing: 0.08em;
         margin-bottom: 4px;
       }
 
-      strong { color: var(--app-primary); font-size: 22px; font-weight: 950; }
-      .normal { color: #94a3b8; text-decoration: line-through; font-weight: 850; }
-      .rating { color: var(--app-text); font-weight: 950; }
+      strong { color: #beee11; font-size: 23px; font-weight: 950; }
+      .normal { color: #71808f; text-decoration: line-through; font-weight: 850; }
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .score-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 86px;
+      padding: 12px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(23, 38, 56, 0.94), rgba(12, 24, 39, 0.94));
+      border: 1px solid rgba(102, 192, 244, 0.14);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+
+      ion-icon {
+        color: var(--app-primary);
+        font-size: 23px;
+        margin-bottom: 6px;
+        filter: drop-shadow(0 0 10px rgba(102, 192, 244, 0.35));
+      }
+
+      .score-value {
+        color: var(--app-text);
+        font-size: 18px;
+        line-height: 1;
+        font-weight: 950;
+      }
+
+      .score-label {
+        color: var(--app-muted);
+        font-size: 10px;
+        font-weight: 950;
+        margin-top: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .rating { color: var(--app-primary); }
+
+      &.metacritic {
+        border-color: rgba(95, 126, 245, 0.22);
+
+        ion-icon { color: #5f7ef5; }
+      }
+
+      &.is-empty {
+        opacity: 0.72;
+      }
+    }
+
+    ion-button {
+      --background: linear-gradient(135deg, #75b022, #a4d007);
+      --background-activated: linear-gradient(135deg, #679b1e, #90b706);
+      --color: #07111f;
+      --box-shadow: 0 16px 34px rgba(164, 208, 7, 0.18);
+      min-height: 50px;
     }
   }
 }

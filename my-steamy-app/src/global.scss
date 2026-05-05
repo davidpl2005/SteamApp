@@ -12,8 +12,9 @@ html, body {
 
 ion-app {
   background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.28), transparent 34%),
-    linear-gradient(180deg, #f8fbff 0%, #eef6ff 46%, #eaf3ff 100%);
+    radial-gradient(circle at 12% 0%, rgba(102, 192, 244, 0.22), transparent 28%),
+    radial-gradient(circle at 88% 12%, rgba(164, 208, 7, 0.12), transparent 30%),
+    linear-gradient(180deg, #07111f 0%, #0d1826 42%, #101927 100%);
 }
 
 ion-content {
@@ -21,15 +22,15 @@ ion-content {
 }
 
 ion-toolbar {
-  --background: rgba(255, 255, 255, 0.82);
+  --background: rgba(12, 23, 36, 0.78);
   --color: var(--app-text);
   backdrop-filter: blur(18px);
-  --border-color: rgba(29, 78, 216, 0.1);
+  --border-color: rgba(102, 192, 244, 0.12);
 }
 
 ion-button {
   --border-radius: 18px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.01em;
   text-transform: none;
 }
@@ -37,7 +38,7 @@ ion-button {
 ion-modal.deal-modal {
   --background: transparent;
   --border-radius: 30px 30px 0 0;
-  --box-shadow: 0 -18px 50px rgba(15, 23, 42, 0.22);
+  --box-shadow: 0 -22px 70px rgba(0, 0, 0, 0.55);
 }
 
 .glass-panel {
@@ -45,4 +46,14 @@ ion-modal.deal-modal {
   border: 1px solid var(--app-border);
   box-shadow: var(--app-shadow);
   backdrop-filter: blur(18px);
+}
+
+@keyframes steamFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes steamShine {
+  from { transform: translateX(-130%) skewX(-18deg); }
+  to { transform: translateX(190%) skewX(-18deg); }
 }

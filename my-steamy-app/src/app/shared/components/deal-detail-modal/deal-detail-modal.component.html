@@ -28,9 +28,19 @@
         <span class="label">Antes</span>
         <span class="normal">${{ deal.normalPrice }}</span>
       </div>
-      <div>
-        <span class="label">Rating</span>
-        <span class="rating">{{ deal.dealRating }}</span>
+    </div>
+
+    <div class="score-grid">
+      <div class="score-card">
+        <ion-icon name="star"></ion-icon>
+        <span class="score-value rating">{{ deal.dealRating }}</span>
+        <span class="score-label">Deal rating</span>
+      </div>
+
+      <div class="score-card metacritic" [class.is-empty]="!hasMetacriticScore">
+        <ion-icon name="game-controller"></ion-icon>
+        <span class="score-value">{{ metacriticScore }}</span>
+        <span class="score-label">Metacritic</span>
       </div>
     </div>
 

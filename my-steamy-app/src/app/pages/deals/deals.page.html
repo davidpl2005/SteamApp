@@ -4,15 +4,27 @@
       <span class="eyebrow">Steam Deals</span>
       <h1>Encuentra ofertas épicas</h1>
       <p>Busca juegos, compara precios y guarda tu favorito para verlo en el widget.</p>
+      <div class="hero-actions">
+        <span><ion-icon name="flame-outline"></ion-icon> Deals en vivo</span>
+        <span><ion-icon name="trophy-outline"></ion-icon> Mejores ratings</span>
+      </div>
     </div>
     <div class="hero-badge">
-      <ion-icon name="sparkles-outline"></ion-icon>
-      <span>Blue picks</span>
+      <ion-icon name="game-controller-outline"></ion-icon>
+      <strong>HOT</strong>
+      <span>picks</span>
     </div>
   </section>
 
   <div class="search-wrap">
     <app-input (searched)="onSearch($event)"></app-input>
+  </div>
+
+  <div class="filter-chips" aria-label="Filtros visuales">
+    <span class="active">Destacados</span>
+    <span>Descuentos</span>
+    <span>Rating alto</span>
+    <span>Wishlist</span>
   </div>
 
   <ng-container *ngIf="!isSearching">

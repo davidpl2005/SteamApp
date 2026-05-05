@@ -2,25 +2,26 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  min-height: 54px;
+  min-height: 56px;
   padding: 0 15px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid var(--app-border);
-  box-shadow: 0 14px 30px rgba(30, 64, 175, 0.12);
+  background: rgba(12, 23, 36, 0.82);
+  border: 1px solid rgba(102, 192, 244, 0.18);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255,255,255,0.04);
   backdrop-filter: blur(16px);
 
   ion-icon {
     font-size: 22px;
     color: var(--app-primary);
     flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(102, 192, 244, 0.28));
   }
 
   ion-input {
     --color: var(--app-text);
-    --placeholder-color: #8aa0bf;
+    --placeholder-color: #748294;
     --placeholder-opacity: 1;
     font-size: 14px;
-    font-weight: 650;
+    font-weight: 700;
   }
 }
